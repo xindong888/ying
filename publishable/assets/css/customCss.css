@@ -1,0 +1,9 @@
+.dd>.dd-empty{
+    display: none;
+}
+.dd>#files{
+padding: 0 0;
+}
+.dd>#files>li>.file_link{
+    margin-left: 0;
+}

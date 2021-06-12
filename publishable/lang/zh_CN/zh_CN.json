@@ -1,0 +1,18 @@
+{
+  "Site": "前台",
+  "Admin": "后端",
+  "Database": "数据库",
+  "Roles": "角色",
+  "Users": "用户",
+  "Media": "媒体",
+  "Posts": "文章",
+  "posts": "文章",
+  "Pages": "页面",
+  "pages": "页面",
+  "Categories": "分类目录",
+  "Menus": "菜单",
+  "Compass": "指南针",
+  "Bread": "增删改查",
+  "Settings": "设置",
+  "The Control Group": "金鹰睿智"
+}
