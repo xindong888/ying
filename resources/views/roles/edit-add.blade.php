@@ -71,13 +71,12 @@
                                         <ul>
                                             @foreach($permission as $perm)
                                                 <li>
-                                                    @if(config('app.locale')=='zh_CN')
                                                         <input type="checkbox" id="permission-{{$perm->id}}" name="permissions[{{$perm->id}}]" class="the-permission" value="{{$perm->id}}" @if(in_array($perm->key, $role_permissions)) checked @endif>
+                                                @if(config('app.locale')=='zh_CN')
                                                         <label for="permission-{{$perm->id}}">{{__(explode('_',$perm->key)[0])}}{{__(explode('_',$perm->key)[1])}}</label>
-                                                    @else
-                                                        <input type="checkbox" id="permission-{{$perm->id}}" name="permissions[{{$perm->id}}]" class="the-permission" value="{{$perm->id}}" @if(in_array($perm->key, $role_permissions)) checked @endif>
+                                                @else
                                                         <label for="permission-{{$perm->id}}">{{\Illuminate\Support\Str::title(str_replace('_', ' ', $perm->key))}}</label>
-                                                    @endif
+                                                @endif
                                                 </li>
                                             @endforeach
                                         </ul>
