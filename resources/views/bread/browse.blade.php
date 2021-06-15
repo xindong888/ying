@@ -389,5 +389,44 @@
             });
             $('.selected_ids').val(ids);
         });
+        /*删除多个选项*/
+        window.onload = function () {
+            // Bulk delete selectors
+            var $bulkDeleteBtn = $('#bulk_delete_btn');
+            var $bulkDeleteModal = $('#bulk_delete_modal');
+            var $bulkDeleteCount = $('#bulk_delete_count');
+            var $bulkDeleteDisplayName = $('#bulk_delete_display_name');
+            var $bulkDeleteInput = $('#bulk_delete_input');
+            // Reposition modal to prevent z-index issues
+            $bulkDeleteModal.appendTo('body');
+            // Bulk delete listener
+            $bulkDeleteBtn.click(function () {
+                console.log('dddd')
+                var ids = [];
+                var $checkedBoxes = $('#dataTable input[type=checkbox]:checked').not('.select_all');
+                var count = $checkedBoxes.length;
+                if (count) {
+                    // Reset input value
+                    $bulkDeleteInput.val('');
+                    // Deletion info
+                    var displayName = count > 1 ? '{{ $dataType->getTranslatedAttribute('display_name_plural') }}' : '{{ $dataType->getTranslatedAttribute('display_name_singular') }}';
+                    displayName = displayName.toLowerCase();
+                    $bulkDeleteCount.html(count);
+                    $bulkDeleteDisplayName.html(displayName);
+                    // Gather IDs
+                    $.each($checkedBoxes, function () {
+                        var value = $(this).val();
+                        ids.push(value);
+                    })
+                    // Set input value
+                    $bulkDeleteInput.val(ids);
+                    // Show modal
+                    $bulkDeleteModal.modal('show');
+                } else {
+                    // No row selected
+                    toastr.warning('{{ __('voyager::generic.bulk_delete_nothing') }}');
+                }
+            });
+        }
     </script>
 @stop
